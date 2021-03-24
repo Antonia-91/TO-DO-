@@ -1,0 +1,19 @@
+{
+  "name": "todo",
+  "version": "1.0.0",
+  "description": "local storage exercise",
+  "main": "script.js",
+  "scripts": {
+    "start": "script.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Antonia-91/TO-DO-.git"
+  },
+  "author": "Antonia Pettersson",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Antonia-91/TO-DO-/issues"
+  },
+  "homepage": "https://github.com/Antonia-91/TO-DO-#readme"
+}
