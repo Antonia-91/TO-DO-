@@ -1,11 +1,11 @@
 console.log("hej");
 let elements = [];
 
-// local Storage
+//local Storage
 window.onload = function () {
   if (JSON.parse(localStorage.getItem("todo-key")) !== null) {
-    elements = JSON.parse(localStorage.getItem("todo-key"));
-    console.log("elements", elements);
+    //elements = JSON.parse(localStorage.getItem("todo-key"));
+    //console.log("elements", elements);
     display();
   }
 };
@@ -17,27 +17,25 @@ function addElement() {
     console.log(elements);
 
     // local Storage
-    if (localStorage.getItem("todo-key") == null) {
-      localStorage.setItem("todo-key", JSON.stringify(elements));
-    } else {
-      localStorage.setItem("todo-key", JSON.stringify(elements));
-    }
     console.log(localStorage.getItem("todo-key"));
+    localStorage.setItem("todo-key", JSON.stringify(elements));
+
     display();
   }
 }
 
 // display
 function display() {
+  elements = JSON.parse(localStorage.getItem("todo-key"));
+
   document.querySelector(".list").innerHTML = "";
-  for (let i = 0; i < elements.length; i++)
+  console.log(elements);
+
+  elements.forEach(function (index, i) {
     document.querySelector(
       ".list"
-    ).innerHTML += `<center><div class="element"> ${
-      elements[i]
-    } <img id="check" src="/checkmark-24-512.png" onclick="strike(${[
-      i,
-    ]})"> <img id="trach" src="/trash-512.webp" onclick="del(${[i]})" </div>`;
+    ).innerHTML += `<center><div class="element"> ${index} <img id="check" src="/checkmark-24-512.png" onclick="strike(${i})"> <img id="trach" src="/trash-512.webp" onclick="del(${i})" </div>`;
+  });
 }
 
 // delete
@@ -46,11 +44,8 @@ function del(index) {
   elements.splice(index, 1);
   console.log(elements);
   // local Storage
-  if (localStorage.getItem("todo-key") == null) {
-    localStorage.setItem("todo-key", JSON.stringify(elements));
-  } else {
-    localStorage.setItem("todo-key", JSON.stringify(elements));
-  }
+  localStorage.setItem("todo-key", JSON.stringify(elements));
+
   display();
 }
 
@@ -63,10 +58,7 @@ function strike(index) {
     elements[index] = "<strike>" + elements[index] + "</strike>";
   }
   // local Storage
-  if (localStorage.getItem("todo-key") == null) {
-    localStorage.setItem("todo-key", JSON.stringify(elements));
-  } else {
-    localStorage.setItem("todo-key", JSON.stringify(elements));
-  }
+  localStorage.setItem("todo-key", JSON.stringify(elements));
+
   display();
 }
